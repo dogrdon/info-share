@@ -1,0 +1,9 @@
+%form{:action => post_a_video_url, :method=>'post', :enctype => 'multipart/form-data'}
+  %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+  %input{:type => 'file', :name => 'video_data[video]'}
+  %br
+  %input{:type => 'text', :name => 'video_data[video_title]'} Video Title
+  %br
+  %textarea{:rows => '5', :cols => '40', :name => 'video_data[video_description]'} Video Description
+  %br
+  %input{:type => 'submit', :value => 'upload yer vid!'}

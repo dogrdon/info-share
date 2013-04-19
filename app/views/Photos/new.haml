@@ -1,0 +1,9 @@
+%form{:action => post_a_photo_url, :method=>'post', :enctype => 'multipart/form-data'}
+  %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+  %input{:type => 'file', :name => 'photo_data[photo]'}
+  %br
+  %input{:type => 'text', :name => 'photo_data[photo_title]'} Photo Title
+  %br
+  %textarea{:rows => '5', :cols => '40', :name => 'photo_data[photo_description]'} This photo is great for...
+  %br
+  %input{:type => 'submit', :value => 'upload photo now!'}

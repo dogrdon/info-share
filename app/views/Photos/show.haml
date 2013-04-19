@@ -1,0 +1,10 @@
+%h1= "#{@photo.photo_title}"
+%img{:src=>@photo.photo}
+  = @photo.photo_description
+
+%form{:action => make_comment_url, :method=>'post', :enctype => 'multipart/form-data'}
+  %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+  %textarea{:rows => '5', :cols => '40', :name => 'photo[comment]'} Leave a comment about this photo
+  %br
+  %input{:type => 'submit', :value => 'submit comment'}
+

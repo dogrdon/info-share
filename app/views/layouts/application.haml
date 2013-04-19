@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title
+      Info-Share
+      = yield(:title)
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
+    = yield(:meta)
+    = stylesheet_link_tag 'screen'
+    = javascript_include_tag 'jquery', 'application'
+    = yield(:head)
+  %body
+    #container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      #user_nav
+        %a{:href => site_root_url, :title => "Info Share Home"}Home
+        %a{:href => upload_photo_url}= 'Upload a photo'
+        %a{:href => upload_video_url}= "Upload a video"
+        - if current_user
+          %a{:href => edit_user_url, :title => "edit user"} edit user
+          %a{:href => logout_url, :title => "logout user"} logout user
+        - else
+          %a{:href => signup_url, :title => "sign up"} sign up
+          %a{:href => login_url, :title => "login"} login
+
+
+    
+    #content
+      %div.page_content
+        = yield :page_content
+      = yield

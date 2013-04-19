@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title Photos at Teacher Share
+    %meta{"http-equiv"=>"Content-Type", 
+       :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag 'screen'
+    = javascript_include_tag 'tabbed'
+  %body
+    %h1= "All Photos"
+    .photos
+      %ul
+        -@photos.each do |x|
+          %li
+            %a{:href =>self.photo_url(x)}
+              %img{:src => (x.photo or x.photos)}
+  
+    %a{:href => lesson_plans_url}= 'Let us make a lesson plan'
+    %br
+    %a{:href => upload_photo_url}= "Upload a photo"
+    
+    #footer
+      %p= 'Copyright by NoOne, do as yee please matey!'

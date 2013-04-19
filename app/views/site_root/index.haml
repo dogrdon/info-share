@@ -1,0 +1,53 @@
+- content_for :meta do
+  %meta{:name => "Description", :content => "Info Share is your resource for connecting with and sharing ideas with others. Upload Videos and Photos of DIY, How-To and info-visualizations. Remix content and comment on other's contributions."}
+  %meta{:name => "Abstract", :content => "Info Share is a place for DIYers, hobbyists, and others to gather, share media resources like videos and photos, and collaborate about using these materials for building personal know how."}
+  %meta{:name => "Keywords", :content => "DIY, life hacks, educational videos, educational photos, collaboration"}
+	
+- content_for :title do
+  = "- Portal to sharing, commenting on, and remixing informational resources"
+
+- content_for :page_content do
+  %h1= 'Welcome to Info Share'
+  %p= 'Browse our users videos and photos, if you would like to upload your own, please login (it is easy and free)'
+	
+#videos
+  %h2= "All Videos"
+  .videos
+    %ul
+      -@videos.each do |x|
+        %li
+          %a{:href => self.video_url(x)}
+            %video{:src => (x.video or x.videos), :controls => 'controls', :width => "350", :height => "150"}
+          %br
+          = x.video_title
+          %br
+          = x.video_description
+#photos
+  %h2= "All Photos"
+  .photos
+    %ul
+      -@photos.each do |x|
+        %li
+          %a{:href => self.photo_url(x)}
+            %img{:src => (x.photo or x.photos)}
+          = x.photo_file_name 
+          %br
+          = x.photo_title
+          %br
+          = x.photo_description
+#users
+  %h2= "Our Users"
+  .users
+    %ul
+      -@users.each do |x|
+        %li
+          %a{:href =>self.user_url(x)}
+            = x.username          
+          %p='Location: ', x.location
+            
+
+  
+   
+            
+  
+  

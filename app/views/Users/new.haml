@@ -1,0 +1,17 @@
+%form{:action => make_new_user_url, :method=>'post', :enctype => 'multipart/form-data'}
+  %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+  %input{:type => 'text', :name => 'user[username]'} Username
+  %br
+  %input{:type => 'text', :name => 'user[email]'} Email
+  %br
+  %input{:type => 'password', :name => 'user[password]'} Password
+  %br
+  %input{:type => 'password', :name => 'user[password_confirmation]'} Confirm Password
+  %br
+  %input{:type => 'text', :name => 'user[location]'} Location
+  %br
+  %textarea{:rows => '5', :cols => '40', :name => 'user[bio]'} I am cool because... (tell us about yourself!)
+  %br
+  %input{:type => 'file', :name => 'user[avatar]'} Upload an image of 'You' 
+  %br
+  %input{:type => 'submit', :value => 'send!'}

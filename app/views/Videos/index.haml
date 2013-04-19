@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title Videos at Teacher Share
+    %meta{"http-equiv"=>"Content-Type", 
+       :content=>"text/html; charset=utf-8"}/
+    = stylesheet_link_tag 'screen'
+    = javascript_include_tag 'tabbed'
+  %body
+    %h1= "All Videos"
+    .videos
+      %ul
+        -@videos.each do |x|
+          %li
+            %a{:href =>self.video_url(x)}
+              %video{:src => (x.video or x.videos), :controls => 'controls'}
+  
+    %a{:href => lesson_plans_url}= 'Let us make a lesson plan'
+    %br
+    %a{:href => upload_video_url}= "Upload a video"
+    
+    #footer
+      %p= 'Copyright by NoOne, do as yee please matey!'

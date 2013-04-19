@@ -1,0 +1,20 @@
+%h1= "#{@video.video_title}"
+%video{:src=>@video.video, :controls => 'controls'}
+  = @video.video_description
+
+%form{:action => make_comment_url, :method=>'post', :enctype => 'multipart/form-data'}
+  %input{:type => "hidden", :name => "authenticity_token", :value => form_authenticity_token}
+  / %br
+  / %input{:type => 'hidden', :name => 'username', :value => @user.username}
+  %br
+  %input{:type => 'hidden', :name => 'id', :value => @video.id}
+  %br
+  %textarea{:rows => '5', :cols => '40', :name => 'comment[content]'} Leave a comment about this video
+  %br
+  %input{:type => 'submit', :value => 'submit comment'}
+  
+- @video.comments.each do |comment|
+  = comment.created_at.strftime('%b %d, %Y at %H:%M')
+  = comment.content
+  %br
+  

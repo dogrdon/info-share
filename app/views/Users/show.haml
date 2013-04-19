@@ -1,0 +1,10 @@
+%h1= "#{@user.username}"
+%br
+.photos
+  %img{:src => @user.avatar}
+  %image_tag{@user.avatar.url(:thumb)}
+%p= "Location: #{@user.location}"
+%br
+%p= "About me: #{@user.bio}"
+
+
